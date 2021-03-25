@@ -2221,11 +2221,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\d_duq\\OneDrive\\Bureau\\making a rest api\\buildingapi\\BuildingApi.csproj",
+      "projectUniqueName": "C:\\Users\\d_duq\\OneDrive\\Bureau\\Week 9\\Rest API\\BuildingApi.csproj",
       "projectName": "BuildingApi",
-      "projectPath": "C:\\Users\\d_duq\\OneDrive\\Bureau\\making a rest api\\buildingapi\\BuildingApi.csproj",
+      "projectPath": "C:\\Users\\d_duq\\OneDrive\\Bureau\\Week 9\\Rest API\\BuildingApi.csproj",
       "packagesPath": "C:\\Users\\d_duq\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\d_duq\\OneDrive\\Bureau\\making a rest api\\buildingapi\\obj\\",
+      "outputPath": "C:\\Users\\d_duq\\OneDrive\\Bureau\\Week 9\\Rest API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\d_duq\\AppData\\Roaming\\NuGet\\NuGet.Config"
