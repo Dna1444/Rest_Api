@@ -485,7 +485,7 @@ namespace BuildingApi.Models
             {
                 entity.ToTable("leads");
 
-                entity.HasIndex(e => e.customers_id)
+                entity.HasIndex(e => e.customer_id)
                     .HasName("index_leads_on_customers_id");
 
                 entity.Property(e => e.id)
@@ -496,8 +496,8 @@ namespace BuildingApi.Models
                     .HasColumnName("company_name")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.customers_id)
-                    .HasColumnName("customers_id")
+                entity.Property(e => e.customer_id)
+                    .HasColumnName("customer_id")
                     .HasColumnType("bigint(20)");
 
                 entity.Property(e => e.department)
@@ -536,7 +536,7 @@ namespace BuildingApi.Models
 
                 entity.HasOne(d => d.customers)
                     .WithMany(p => p.Leads)
-                    .HasForeignKey(d => d.customers_id)
+                    .HasForeignKey(d => d.customer_id)
                     .HasConstraintName("fk_rails_f6c5b6922a");
             });
 

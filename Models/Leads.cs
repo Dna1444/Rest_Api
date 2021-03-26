@@ -20,7 +20,7 @@ namespace BuildingApi.Models
         public byte[] file_attachment { get; set; }
         public DateTime created_at { get; set; }
         public string filename { get; set; }
-        public long? customers_id { get; set; }
+        public long? customer_id { get; set; }
 
         public virtual Customers customers { get; set; }
     }
