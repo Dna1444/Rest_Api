@@ -488,11 +488,11 @@ namespace BuildingApi.Models
                 entity.HasIndex(e => e.customers_id)
                     .HasName("index_leads_on_customers_id");
 
-                entity.Property(e => e.Id)
+                entity.Property(e => e.id)
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.CompanyName)
+                entity.Property(e => e.company_name)
                     .HasColumnName("company_name")
                     .HasMaxLength(255);
 
@@ -500,37 +500,37 @@ namespace BuildingApi.Models
                     .HasColumnName("customers_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.Department)
+                entity.Property(e => e.department)
                     .HasColumnName("department")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Email)
+                entity.Property(e => e.email)
                     .HasColumnName("email")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.FileAttachment)
+                entity.Property(e => e.file_attachment)
                     .HasColumnName("file_attachment")
                     .HasColumnType("blob");
 
-                entity.Property(e => e.Filename)
+                entity.Property(e => e.filename)
                     .HasColumnName("filename")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.FullName)
+                entity.Property(e => e.full_name)
                     .HasColumnName("full_name")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Message).HasColumnName("message");
+                entity.Property(e => e.message).HasColumnName("message");
 
-                entity.Property(e => e.Phone)
+                entity.Property(e => e.phone)
                     .HasColumnName("phone")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.ProjectDescription)
+                entity.Property(e => e.project_description)
                     .HasColumnName("project_description")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.ProjectName)
+                entity.Property(e => e.project_name)
                     .HasColumnName("project_name")
                     .HasMaxLength(255);
 
