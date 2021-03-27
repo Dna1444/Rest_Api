@@ -49,16 +49,12 @@ namespace BuildingApi.Controllers
         //Updating the status of a given elevator. Frist, identification of the elevator is needed.
         // PUT: api/elevators/id/updatestatus        
         [HttpPut("{id}/updatePending")]
-        public async Task<IActionResult> PutmodifyStatusIntervention(long id, string Status)
+        public async Task<IActionResult> PutmodifyStatusIntervention(long id)
         {
-            if (Status != "InProgress")
-            {
-                return BadRequest();
-            }
-
+            
             var intervention = await _context.Interventions.FindAsync(id);
 
-            intervention.Status = Status;
+            intervention.Status = "InProgress";
             intervention.Start_of_the_intervention = DateTime.Now;
 
             try
@@ -83,16 +79,13 @@ namespace BuildingApi.Controllers
         //Updating the status of a given elevator. Frist, identification of the elevator is needed.
         // PUT: api/elevators/id/updatestatus        
         [HttpPut("{id}/EndIntervention")]
-        public async Task<IActionResult> PutEndingIntervention(long id, string Status)
+        public async Task<IActionResult> PutEndingIntervention(long id)
         {
-            if (Status != "Completed")
-            {
-                return BadRequest();
-            }
+            
 
             var intervention = await _context.Interventions.FindAsync(id);
 
-            intervention.Status = Status;
+            intervention.Status = "Completed";
             intervention.End_of_the_intervention = DateTime.Now;
 
             try

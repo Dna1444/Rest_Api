@@ -9,7 +9,7 @@ namespace BuildingApi.Models
         public long author { get; set; }
         public long customers_id { get; set; }
         public long building_id { get; set; }
-        public long batteries_id { get; set; }
+        public long? batteries_id { get; set; }
         public long? columns_id { get; set; }
         public long? elevators_id { get; set; }
         public long? employees_id { get; set; }
