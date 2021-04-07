@@ -34,9 +34,9 @@ namespace BuildingApi.Controllers
         {
             var customer = await _context.Customers.Where(c => c.CpyContactEmail == Email).ToListAsync();
 
-            if (CustomerExists(Email))
+            if (!CustomerExists(Email))
             {
-                return NotFound();
+                return BadRequest();
             }
 
             return customer;
