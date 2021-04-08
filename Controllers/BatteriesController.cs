@@ -92,6 +92,20 @@ namespace BuildingApi.Controllers
             return NoContent();
         }
 
+        [HttpGet("buildingId/{buildingId}")]
+        public async Task<ActionResult<IEnumerable<Batteries>>> GetbatteriesBybuildingId(long buildingId)
+        {
+            var batteries = await _context.Batteries.Where(c => c.BuildingId == buildingId).ToListAsync();
+
+            if (batteries == null)
+            {
+                return NotFound();
+            }
+
+            return batteries;
+        }
+    
+
         private bool BatteriesExists(long id)
         {
             return _context.Batteries.Any(e => e.Id == id);

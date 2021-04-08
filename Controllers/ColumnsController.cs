@@ -92,6 +92,18 @@ namespace BuildingApi.Controllers
 
             return NoContent();
         }
+        [HttpGet("batteriesId/{batteriesId}")]
+        public async Task<ActionResult<IEnumerable<Columns>>> GetColumnBybatteriesId(long batteriesId)
+        {
+            var columns = await _context.Columns.Where(c => c.BatteryId == batteriesId).ToListAsync();
+
+            if (columns == null)
+            {
+                return NotFound();
+            }
+
+            return columns;
+        }
 
         private bool columnsExists(long id)
         {

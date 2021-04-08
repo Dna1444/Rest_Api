@@ -42,6 +42,19 @@ namespace BuildingApi.Controllers
             return elevators;
         }
 
+        [HttpGet("columnId/{columnId}")]
+        public async Task<ActionResult<IEnumerable<Elevators>>> GetelevatorByColumnId(long columnId)
+        {
+            var elevators = await _context.Elevators.Where(c => c.ColumnId == columnId).ToListAsync();
+
+            if (elevators == null)
+            {
+                return NotFound();
+            }
+
+            return elevators;
+        }
+
        
         //Action that recuperates the status of a given elevator
         [HttpGet("{id}/status")]
