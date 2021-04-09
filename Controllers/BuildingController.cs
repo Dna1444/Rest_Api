@@ -53,9 +53,9 @@ namespace BuildingApi.Controllers
         }
 
     [HttpGet("CustomerId/{customersId}")]
-    public async Task<ActionResult<List<Buildings>>> GetbuildingByCustomerId(long customerId)
+    public async Task<ActionResult<List<Buildings>>> GetbuildingByCustomerId(long customersId)
         {
-            var buildings = await _context.Buildings.Where(c => c.customer_id == customerId).ToListAsync();
+            var buildings = await _context.Buildings.Where(c => c.customer_id == customersId).ToListAsync();
 
             if (buildings == null)
             {
