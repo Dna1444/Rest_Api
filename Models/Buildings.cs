@@ -19,7 +19,7 @@ namespace BuildingApi.Models
         public string TechContactFullName { get; set; }
         public string TechContactEmail { get; set; }
         public string TechContactPhone { get; set; }
-        public long? CustomerId { get; set; }
+        public long? customer_id { get; set; }
         public long? AddressId { get; set; }
 
         public virtual Addresses address { get; set; }

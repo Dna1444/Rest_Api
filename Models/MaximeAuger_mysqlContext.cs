@@ -227,7 +227,7 @@ namespace BuildingApi.Models
                 entity.HasIndex(e => e.AddressId)
                     .HasName("index_buildings_on_address_id");
 
-                entity.HasIndex(e => e.CustomerId)
+                entity.HasIndex(e => e.customer_id)
                     .HasName("index_buildings_on_customer_id");
 
                 entity.Property(e => e.Id)
@@ -250,7 +250,7 @@ namespace BuildingApi.Models
                     .HasColumnName("adm_contact_phone")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.CustomerId)
+                entity.Property(e => e.customer_id)
                     .HasColumnName("customer_id")
                     .HasColumnType("bigint(20)");
 
@@ -273,7 +273,7 @@ namespace BuildingApi.Models
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Buildings)
-                    .HasForeignKey(d => d.CustomerId)
+                    .HasForeignKey(d => d.customer_id)
                     .HasConstraintName("fk_rails_c29cbe7fb8");
             });
 
