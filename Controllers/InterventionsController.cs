@@ -107,6 +107,19 @@ namespace BuildingApi.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<Interventions>>> PostInterventions(Interventions intervention)
+        {
+            Interventions interventionForm = intervention;
+            interventionForm.author = 9;
+            interventionForm.Result = "Incomplete";
+            interventionForm.Status = "Pending";
+            _context.Interventions.Add(interventionForm);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetInterventions),new {id = intervention.id}, intervention);
+        }
+
         private bool interventionExists(long id)
         {
             return _context.Interventions.Any(e => e.id == id);
