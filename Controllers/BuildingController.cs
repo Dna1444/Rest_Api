@@ -52,7 +52,7 @@ namespace BuildingApi.Controllers
             return building;
         }
 
-    [HttpGet("CustomerId/{custoemrsId}")]
+    [HttpGet("CustomerId/{customersId}")]
     public async Task<ActionResult<IEnumerable<Buildings>>> GetbuildingByCustomerId(long customerId)
         {
             var buildings = await _context.Buildings.Where(c => c.CustomerId == customerId).ToListAsync();
