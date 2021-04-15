@@ -29,6 +29,7 @@ namespace BuildingApi.Models
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Interventions> Interventions { get; set; }
+        public virtual DbSet<Smart_contracts> Smart_contracts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -275,6 +276,39 @@ namespace BuildingApi.Models
                     .WithMany(p => p.Buildings)
                     .HasForeignKey(d => d.customer_id)
                     .HasConstraintName("fk_rails_c29cbe7fb8");
+            });
+
+            modelBuilder.Entity<Smart_contracts>(entity =>
+            {
+                entity.ToTable("smart_contracts");
+
+                entity.Property(e => e.id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.transactionHash)
+                    .HasColumnName("transactionHash")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.projectOfficeAddress)
+                    .HasColumnName("projectOfficeAddress")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.materialProviderAddress)
+                    .HasColumnName("materialProviderAddress")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.solutionManufacturinAddress)
+                    .HasColumnName("solutionManufacturinAddress")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.qualitySecurityHomologationAddress)
+                    .HasColumnName("qualitySecurityHomologationAddress")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.blockNumber)
+                    .HasColumnName("blockNumber")
+                    .HasColumnType("bigint(20)");
             });
 
             modelBuilder.Entity<Columns>(entity =>
