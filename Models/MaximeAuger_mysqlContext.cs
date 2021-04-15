@@ -298,8 +298,8 @@ namespace BuildingApi.Models
                     .HasColumnName("materialProviderAddress")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.solutionManufacturinAddress)
-                    .HasColumnName("solutionManufacturinAddress")
+                entity.Property(e => e.solutionManufacturingAddress)
+                    .HasColumnName("solutionManufacturingAddress")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.qualitySecurityHomologationAddress)

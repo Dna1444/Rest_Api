@@ -10,7 +10,7 @@ namespace BuildingApi.Models
         public string transactionHash { get; set; }
         public string projectOfficeAddress { get; set; }
         public string materialProviderAddress { get; set; }
-        public string solutionManufacturinAddress { get; set; }
+        public string solutionManufacturingAddress { get; set; }
         public string qualitySecurityHomologationAddress { get; set; }
         public int? blockNumber { get; set; }
 
