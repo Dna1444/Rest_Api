@@ -28,10 +28,84 @@ namespace BuildingApi.Controllers
             return await _context.Smart_contracts.ToListAsync();
         }
 
+        //Updating the status of a given elevator. Frist, identification of the elevator is needed.
+        // PUT: api/elevators/id/updatestatus        
+        [HttpPut("addQualitySecurityHomologation/{solutionManufacturing}/{qualitySecurityHomologation}")]
+        public async Task<ActionResult<List<Smart_contracts>>> PutQuality(string solutionManufacturing, string qualitySecurityHomologation)
+        {
+            
+            
+            var smart_Contracts = await _context.Smart_contracts.Where(s => s.solutionManufacturingAddress == solutionManufacturing).ToListAsync();
+            long Id = 0;
+            foreach (Smart_contracts e in smart_Contracts)
+            {
+                e.qualitySecurityHomologationAddress = qualitySecurityHomologation;
+                Id = e.id;
+            }
+
+            
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!smartContractsExists(Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
+        
+        //Updating the status of a given elevator. Frist, identification of the elevator is needed.
+        // PUT: api/elevators/id/updatestatus        
+        [HttpPut("addSolutionManufacturing/{materialProvider}/{solutionManufacturing}")]
+        public async Task<ActionResult<List<Smart_contracts>>> PutSolution(string materialProvider, string solutionManufacturing)
+        {
+            
+            
+            var smart_Contracts = await _context.Smart_contracts.Where(s => s.materialProviderAddress == materialProvider).ToListAsync();
+            long Id = 0;
+            foreach (Smart_contracts e in smart_Contracts)
+            {
+                e.solutionManufacturingAddress = solutionManufacturing;
+                Id = e.id;
+            }
+
+            
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!smartContractsExists(Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
 
         //Updating the status of a given elevator. Frist, identification of the elevator is needed.
         // PUT: api/elevators/id/updatestatus        
-        [HttpPut("{projectOffice}/{materialProvider}")]
+        [HttpPut("addMaterialProvider/{projectOffice}/{materialProvider}")]
         public async Task<ActionResult<List<Smart_contracts>>> PutMaterial(string projectOffice, string materialProvider)
         {
             
