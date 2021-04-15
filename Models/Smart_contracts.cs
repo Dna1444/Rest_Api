@@ -12,7 +12,7 @@ namespace BuildingApi.Models
         public string materialProviderAddress { get; set; }
         public string solutionManufacturinAddress { get; set; }
         public string qualitySecurityHomologationAddress { get; set; }
-        public long? blockNumber { get; set; }
+        public int? blockNumber { get; set; }
 
     }
 }
