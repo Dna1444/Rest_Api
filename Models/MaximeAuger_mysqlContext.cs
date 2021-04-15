@@ -308,7 +308,7 @@ namespace BuildingApi.Models
 
                 entity.Property(e => e.blockNumber)
                     .HasColumnName("blockNumber")
-                    .HasColumnType("bigint(20)");
+                    .HasColumnType("int(20)");
             });
 
             modelBuilder.Entity<Columns>(entity =>
