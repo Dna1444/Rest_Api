@@ -36,12 +36,7 @@ namespace BuildingApi.Controllers
             
             
             var smart_Contracts = await _context.Smart_contracts.Where(s => s.solutionManufacturingAddress == solutionManufacturing).ToListAsync();
-            long Id = 0;
-            foreach (Smart_contracts e in smart_Contracts)
-            {
-                e.qualitySecurityHomologationAddress = qualitySecurityHomologation;
-                Id = e.id;
-            }
+            smart_Contracts[0].qualitySecurityHomologationAddress = qualitySecurityHomologation;
 
             
 
@@ -51,7 +46,7 @@ namespace BuildingApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!smartContractsExists(Id))
+                if (!smartContractsExists(smart_Contracts[0].id))
                 {
                     return NotFound();
                 }
@@ -74,13 +69,7 @@ namespace BuildingApi.Controllers
             
             
             var smart_Contracts = await _context.Smart_contracts.Where(s => s.materialProviderAddress == materialProvider).ToListAsync();
-            long Id = 0;
-            foreach (Smart_contracts e in smart_Contracts)
-            {
-                e.solutionManufacturingAddress = solutionManufacturing;
-                Id = e.id;
-            }
-
+            smart_Contracts[0].solutionManufacturingAddress = solutionManufacturing;
             
 
             try
@@ -89,7 +78,7 @@ namespace BuildingApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!smartContractsExists(Id))
+                if (!smartContractsExists(smart_Contracts[0].id))
                 {
                     return NotFound();
                 }
@@ -111,13 +100,7 @@ namespace BuildingApi.Controllers
             
             
             var smart_Contracts = await _context.Smart_contracts.Where(s => s.projectOfficeAddress == projectOffice).ToListAsync();
-            long Id = 0;
-            foreach (Smart_contracts e in smart_Contracts)
-            {
-                e.materialProviderAddress = materialProvider;
-                Id = e.id;
-            }
-
+           smart_Contracts[0].materialProviderAddress = materialProvider;
             
 
             try
@@ -126,7 +109,7 @@ namespace BuildingApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!smartContractsExists(Id))
+                if (!smartContractsExists(smart_Contracts[0].id))
                 {
                     return NotFound();
                 }
