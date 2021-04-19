@@ -23,9 +23,23 @@ namespace BuildingApi.Controllers
         //Action that gives the list of all columns
         // GET: api/columns
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Addresses>>> Getquotes()
+        public async Task<ActionResult<IEnumerable<Addresses>>> Getaddresse()
         {
             return await _context.Addresses.ToListAsync();
+        }
+
+    
+
+    //Action that gives the list of all columns
+        // GET: api/columns
+        [HttpGet("Citys")]
+        public int  GetuniqueCity()
+        {
+            IEnumerable<Addresses> buildingAddresses = from address in _context.Addresses where address.City !="" select address;
+
+            int amountOfCities = buildingAddresses.Select(building => building.City).Distinct().Count();
+            
+            return amountOfCities;
         }
 
     }
