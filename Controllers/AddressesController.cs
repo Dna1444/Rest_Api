@@ -32,7 +32,7 @@ namespace BuildingApi.Controllers
 
     //Action that gives the list of all columns
         // GET: api/columns
-        [HttpGet("Citys")]
+        [HttpGet("Cities")]
         public int  GetuniqueCity()
         {
             IEnumerable<Addresses> buildingAddresses = from address in _context.Addresses where address.City !="" select address;
