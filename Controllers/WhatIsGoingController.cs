@@ -37,7 +37,7 @@ namespace BuildingApi.Controllers
             int amountOfCities = buildingAddresses.Select(building => building.City).Distinct().Count();
             Console.WriteLine(listElevatorsNotRunning);
             //Answear structure
-            string answear = "Greetings\nThere are currently "+ amountOfElevators +" elevators deployed in the "+ amountOfBuildings +" buildings of your " + amountOfCustomers +" customers.\nCurrently, " + amountOfElevatorsNotRunning +" elevators are not in Running Status and are being serviced \n" + amountOfBatteries + " Batteries are deployed across "+ amountOfCities +" cities \nOn another note you currently have "+ amountOfQuotes+" quotes awaiting processing\nYou also have "+ amountOfLeads+ " leads in your contact requests";
+            string answear = "Greetings,\nThere are currently "+ amountOfElevators +" elevators deployed in "+ amountOfBuildings +" buildings of your " + amountOfCustomers +" customers.\nCurrently, " + amountOfElevatorsNotRunning +" elevators are not in Running Status and are being serviced. \n" + amountOfBatteries + " Batteries are deployed across "+ amountOfCities +" cities. \nOn another note you currently have "+ amountOfQuotes+" quotes awaiting processing. \nYou also have "+ amountOfLeads+ " leads in your contact requests";
             return answear;
         }
        
