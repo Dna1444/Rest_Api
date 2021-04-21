@@ -60,6 +60,16 @@ namespace BuildingApi.Controllers
 
             return newLeads;
         }
+
+        // POST: api/leads
+        [HttpPost]
+        public async Task<ActionResult<Leads>> PostLeads(Leads leads)
+        {
+            _context.Leads.Add(leads);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetLeads", new { id = leads.id }, leads);
+        }
     }
 }
 
