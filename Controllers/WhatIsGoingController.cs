@@ -41,6 +41,25 @@ namespace BuildingApi.Controllers
             return answear;
         }
        
+        [HttpGet("fr")]
+        public string GetWhatIsGoingFr(){
+            //collecting the information in different variables
+            int amountOfElevators = _context.Elevators.ToList().Count();
+            int amountOfBatteries = _context.Batteries.ToList().Count();
+            int amountOfCustomers = _context.Customers.ToList().Count();
+            int amountOfQuotes = _context.Quotes.ToList().Count();
+            int amountOfLeads = _context.Leads.ToList().Count();
+            var listElevatorsNotRunning = from elevator in _context.Elevators where elevator.Status.ToLower() != "Online" select elevator;
+            int amountOfElevatorsNotRunning = listElevatorsNotRunning.Count();
+            IEnumerable<Addresses> buildingAddresses = from address in _context.Addresses where address.City !="" select address;
+            int amountOfBuildings = buildingAddresses.Select(building => building.NumberStreet).Distinct().Count();
+            int amountOfCities = buildingAddresses.Select(building => building.City).Distinct().Count();
+            Console.WriteLine(listElevatorsNotRunning);
+            //Answear structure
+            string answear = "Bonjour, il y a présentement "+ amountOfElevators +" ascenseurs déployés dans "+ amountOfBuildings +" bâtiments de " + amountOfCustomers +" clients. Il y a présentement  " + amountOfElevatorsNotRunning +" ascenseur qui ne sont pas en fonction et sont en cours de maintenance. Également, " + amountOfBatteries + " batteries sont déployés dans plus de "+ amountOfCities +" villes. Sur une autre note, vous avez actuellement "+ amountOfLeads+" soumissions en attente de traitement. Vous avez également "+ amountOfQuotes+ " requêtes dans vos demandes de contact";
+            return answear;
+        }
+       
 
     }
 }
