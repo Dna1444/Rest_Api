@@ -121,7 +121,7 @@ namespace BuildingApi.Controllers
         }
 
         [HttpPost("{product}/{id}/{report}")]
-        public async Task<ActionResult<IEnumerable<Interventions>>> PostAlexaInterventions(string product, int id, string report)
+        public async Task<ActionResult<IEnumerable<Interventions>>> PostAlexaInterventions(string product, long? id, string report)
         {
             long? customerId;
             long? buildingId;
