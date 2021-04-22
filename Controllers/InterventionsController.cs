@@ -120,6 +120,66 @@ namespace BuildingApi.Controllers
             return CreatedAtAction(nameof(GetInterventions),new {id = intervention.id}, intervention);
         }
 
+        [HttpPost("{product}/{id}/{report}")]
+        public async Task<ActionResult<IEnumerable<Interventions>>> PostAlexaInterventions(string product, int id, string report)
+        {
+            long? customerId;
+            long? buildingId;
+            long? batteryId;
+            long? columnId = null;
+            long? elevatorId = null;
+
+
+            if(product == "battery"){
+                batteryId = id;
+                var battery = await _context.Batteries.FindAsync(id);
+                var building = await _context.Buildings.FindAsync(battery.BuildingId);
+                var customer = await _context.Customers.FindAsync(building.customer_id);
+                buildingId = battery.BuildingId;
+                customerId = building.customer_id;
+                
+
+            }else if(product == "column"){
+                columnId = id;
+                var column = await _context.Columns.FindAsync(id);
+                var battery = await _context.Batteries.FindAsync(column.BatteryId);
+                var building = await _context.Buildings.FindAsync(battery.BuildingId);
+                var customer = await _context.Customers.FindAsync(building.customer_id);
+                batteryId = column.BatteryId;
+                buildingId = battery.BuildingId;
+                customerId = building.customer_id;
+
+            }else{
+                elevatorId = id;
+                var elevator = await _context.Elevators.FindAsync(id);
+                var column = await _context.Columns.FindAsync(elevator.ColumnId);
+                var battery = await _context.Batteries.FindAsync(column.BatteryId);
+                var building = await _context.Buildings.FindAsync(battery.BuildingId);
+                var customer = await _context.Customers.FindAsync(building.customer_id);
+                columnId = elevator.ColumnId;
+                batteryId = column.BatteryId;
+                buildingId = battery.BuildingId;
+                customerId = building.customer_id;
+                
+            }
+        
+
+            Interventions interventionForm = new Interventions();
+            interventionForm.author = 9;
+            interventionForm.customers_id = (long)customerId;
+            interventionForm.building_id = (long)buildingId;
+            interventionForm.batteries_id = batteryId;
+            interventionForm.columns_id = columnId;
+            interventionForm.elevators_id = elevatorId;
+            interventionForm.Report = report;
+            interventionForm.Result = "Incomplete";
+            interventionForm.Status = "Pending";
+            _context.Interventions.Add(interventionForm);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetInterventions),new {id = interventionForm.id}, interventionForm);
+        }
+
         private bool interventionExists(long id)
         {
             return _context.Interventions.Any(e => e.id == id);
