@@ -165,7 +165,7 @@ namespace BuildingApi.Controllers
         
 
             Interventions interventionForm = new Interventions();
-            interventionForm.author = 9;
+            interventionForm.author = 10;
             interventionForm.customers_id = (long)customerId;
             interventionForm.building_id = (long)buildingId;
             interventionForm.batteries_id = batteryId;
