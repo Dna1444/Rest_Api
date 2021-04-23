@@ -149,7 +149,7 @@ namespace BuildingApi.Controllers
                 buildingId = battery.BuildingId;
                 customerId = building.customer_id;
 
-            }else if(product == "elevator" || product == "elevador" || product == "ascensor" || product == "ascenceur"){
+            }else if(product == "elevator" || product == "elevador" || product == "ascensor" || product == "ascenceur" || product == "ascenseur"){
                 elevatorId = id;
                 var elevator = await _context.Elevators.FindAsync(id);
                 var column = await _context.Columns.FindAsync(elevator.ColumnId);
