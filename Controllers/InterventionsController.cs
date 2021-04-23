@@ -130,7 +130,7 @@ namespace BuildingApi.Controllers
             long? elevatorId = null;
 
 
-            if(product == "battery" || product == "bateria"){
+            if(product == "battery" || product == "bateria" || product == "batterie"){
                 batteryId = id;
                 var battery = await _context.Batteries.FindAsync(id);
                 var building = await _context.Buildings.FindAsync(battery.BuildingId);
@@ -139,7 +139,7 @@ namespace BuildingApi.Controllers
                 customerId = building.customer_id;
                 
 
-            }else if(product == "column" || product == "columna"){
+            }else if(product == "column" || product == "columna" || product == "colonne"){
                 columnId = id;
                 var column = await _context.Columns.FindAsync(id);
                 var battery = await _context.Batteries.FindAsync(column.BatteryId);
@@ -149,7 +149,7 @@ namespace BuildingApi.Controllers
                 buildingId = battery.BuildingId;
                 customerId = building.customer_id;
 
-            }else if(product == "elevator" || product == "elevador" || product == "ascensor"){
+            }else if(product == "elevator" || product == "elevador" || product == "ascensor" || product == "ascenseur"){
                 elevatorId = id;
                 var elevator = await _context.Elevators.FindAsync(id);
                 var column = await _context.Columns.FindAsync(elevator.ColumnId);
