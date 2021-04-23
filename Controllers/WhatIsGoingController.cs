@@ -78,6 +78,26 @@ namespace BuildingApi.Controllers
             string answear = "Saludos,\nActualmente hay "+ amountOfElevators +" elevadores desplegados en los "+ amountOfBuildings +" edificios de sus " + amountOfCustomers +" clientes.\nDe los cuales, " + amountOfElevatorsNotRunning +" elevadores no se encuentran funcionando y están siendo reparados.\n" + amountOfBatteries + " baterías  están  desplegadas en  "+ amountOfCities +" ciudades \nNota aparte, actualmente tiene  "+ amountOfQuotes+" cotizaciones esperando ser procesadas.\nTambién tiene  "+ amountOfLeads+ " potenciales clientes en sus solicitudes de contacto.";           
             return answear;
         }
+
+        [HttpGet("pt")]
+        public string GetWhatIsGoingPt(){
+            //collecting the information in different variables
+            int amountOfElevators = _context.Elevators.ToList().Count();
+            int amountOfBatteries = _context.Batteries.ToList().Count();
+            int amountOfCustomers = _context.Customers.ToList().Count();
+            int amountOfQuotes = _context.Quotes.ToList().Count();
+            int amountOfLeads = _context.Leads.ToList().Count();
+            var listElevatorsNotRunning = from elevator in _context.Elevators where elevator.Status.ToLower() != "Online" select elevator;
+            int amountOfElevatorsNotRunning = listElevatorsNotRunning.Count();
+            IEnumerable<Addresses> buildingAddresses = from address in _context.Addresses where address.City !="" select address;
+            int amountOfBuildings = buildingAddresses.Select(building => building.NumberStreet).Distinct().Count();
+            int amountOfCities = buildingAddresses.Select(building => building.City).Distinct().Count();
+            Console.WriteLine(listElevatorsNotRunning);
+            //Answear structure
+            string answear = "Saudações, Existem atualmente "+ amountOfElevators +" elevadores implantados nos edifícios "+ amountOfBuildings +" de seus clientes " + amountOfCustomers +". Atualmente, elevadores, " + amountOfElevatorsNotRunning +" não estão em status de operação e estão sendo atendidos " + amountOfBatteries + " baterias são implantadas em cidades "+ amountOfCities +" Por outro lado, você atualmente tem  "+ amountOfQuotes+" cotações aguardando processamento.\nVocê também tem "+ amountOfLeads+ " leads em suas solicitações de contato.";           
+            return answear;
+        }
+       
        
 
     }
