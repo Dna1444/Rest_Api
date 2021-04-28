@@ -29,7 +29,7 @@ namespace BuildingApi.Controllers
 
         // Action that recuperates a given elevators by Id 
         // GET: api/elevators/id
-        [HttpGet("{Email}")]
+        [HttpGet("email/{Email}")]
         public async Task<ActionResult<List<Employees>>> GetCustomerbyEmail(string Email)
         {
             var employees = await _context.Employees.Where(c => c.Email == Email).ToListAsync();
