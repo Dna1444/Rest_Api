@@ -27,7 +27,7 @@ namespace BuildingApi.Controllers
             return await _context.Elevators.ToListAsync();
         }
 
-         // Action that recuperates a given elevators by Id 
+        // Action that recuperates a given elevators by Id 
         // GET: api/elevators/id
         [HttpGet("{id}")]
         public async Task<ActionResult<Elevators>> GetelevatorsById(long id)
@@ -55,7 +55,7 @@ namespace BuildingApi.Controllers
             return elevators;
         }
 
-       
+
         //Action that recuperates the status of a given elevator
         [HttpGet("{id}/status")]
         public async Task<ActionResult<string>> GetelevatorStatus(long id)
@@ -78,7 +78,7 @@ namespace BuildingApi.Controllers
         {
             var elevator = await _context.Elevators
                 .Where(c => c.Status != "Online").ToListAsync();
-                
+
 
             if (elevator == null)
             {
@@ -89,12 +89,13 @@ namespace BuildingApi.Controllers
         }
 
 
-       
+
         //Updating the status of a given elevator. Frist, identification of the elevator is needed.
         // PUT: api/elevators/id/updatestatus        
         [HttpPut("{id}/updatestatus")]
-        public async Task<IActionResult> PutmodifyElevatorStatus(long id, string status)
+        public async Task<ActionResult<Elevators>> PutmodifyElevatorStatus(long id, string status)
         {
+
             if (status == null)
             {
                 return BadRequest();
@@ -104,9 +105,12 @@ namespace BuildingApi.Controllers
 
             elevator.Status = status;
 
+
+
             try
             {
                 await _context.SaveChangesAsync();
+
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -120,7 +124,7 @@ namespace BuildingApi.Controllers
                 }
             }
 
-            return NoContent();
+            return elevator;
         }
 
         private bool elevatorsExists(long id)
