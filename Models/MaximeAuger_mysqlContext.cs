@@ -36,7 +36,7 @@ namespace BuildingApi.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;port=3306;database=Dana_Duquette;uid=codeboxx;password=Codeboxx1!");
+                optionsBuilder.UseMySQL("server=danaduquette.cvy7w4ka4gnx.us-east-1.rds.amazonaws.com;port=3306;database=Dana_Duquette;uid=Dduquette;password=Aa-8995302");
             }
         }
 
@@ -707,75 +707,75 @@ namespace BuildingApi.Models
                     .HasColumnName("reset_password_token")
                     .HasMaxLength(255);
             });
-             modelBuilder.Entity<Interventions>(entity =>
-            {
-                entity.ToTable("interventions");
+            modelBuilder.Entity<Interventions>(entity =>
+           {
+               entity.ToTable("interventions");
 
-                entity.HasIndex(e => e.author)
-                    .HasName("index_interventions_on_author");
+               entity.HasIndex(e => e.author)
+                   .HasName("index_interventions_on_author");
 
-                entity.HasIndex(e => e.batteries_id)
-                    .HasName("index_interventions_on_batteries_id");
+               entity.HasIndex(e => e.batteries_id)
+                   .HasName("index_interventions_on_batteries_id");
 
-                entity.HasIndex(e => e.building_id)
-                    .HasName("index_interventions_on_building_id");
+               entity.HasIndex(e => e.building_id)
+                   .HasName("index_interventions_on_building_id");
 
-                entity.HasIndex(e => e.columns_id)
-                    .HasName("index_interventions_on_columns_id");
+               entity.HasIndex(e => e.columns_id)
+                   .HasName("index_interventions_on_columns_id");
 
-                entity.HasIndex(e => e.customers_id)
-                    .HasName("index_interventions_on_customers_id");
+               entity.HasIndex(e => e.customers_id)
+                   .HasName("index_interventions_on_customers_id");
 
-                entity.HasIndex(e => e.elevators_id)
-                    .HasName("index_interventions_on_elevators_id");
+               entity.HasIndex(e => e.elevators_id)
+                   .HasName("index_interventions_on_elevators_id");
 
-                entity.HasIndex(e => e.employees_id)
-                    .HasName("index_interventions_on_employees_id");
+               entity.HasIndex(e => e.employees_id)
+                   .HasName("index_interventions_on_employees_id");
 
-                entity.Property(e => e.id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.id)
+                   .HasColumnName("id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.author)
-                    .HasColumnName("author")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.author)
+                   .HasColumnName("author")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.batteries_id)
-                    .HasColumnName("batteries_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.batteries_id)
+                   .HasColumnName("batteries_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.building_id)
-                    .HasColumnName("building_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.building_id)
+                   .HasColumnName("building_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.columns_id)
-                    .HasColumnName("columns_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.columns_id)
+                   .HasColumnName("columns_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.customers_id)
-                    .HasColumnName("customers_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.customers_id)
+                   .HasColumnName("customers_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.elevators_id)
-                    .HasColumnName("elevators_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.elevators_id)
+                   .HasColumnName("elevators_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.employees_id)
-                    .HasColumnName("employees_id")
-                    .HasColumnType("bigint(20)");
+               entity.Property(e => e.employees_id)
+                   .HasColumnName("employees_id")
+                   .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.End_of_the_intervention)
-                    .HasColumnName("End_of_the_intervention")
-                    .HasColumnType("date");
+               entity.Property(e => e.End_of_the_intervention)
+                   .HasColumnName("End_of_the_intervention")
+                   .HasColumnType("date");
 
-                entity.Property(e => e.Start_of_the_intervention)
-                    .HasColumnName("Start_of_the_intervention")
-                    .HasColumnType("date");
+               entity.Property(e => e.Start_of_the_intervention)
+                   .HasColumnName("Start_of_the_intervention")
+                   .HasColumnType("date");
 
-                entity.Property(e => e.Status).HasMaxLength(255);
+               entity.Property(e => e.Status).HasMaxLength(255);
 
-               
-            });
+
+           });
 
 
             OnModelCreatingPartial(modelBuilder);
